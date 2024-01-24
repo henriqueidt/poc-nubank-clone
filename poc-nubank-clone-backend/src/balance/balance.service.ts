@@ -12,15 +12,15 @@ export class BalanceService {
     return `This action returns all balance`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} balance`;
+  findOne(cpf: string) {
+    return `This action returns a #${cpf} balance`;
   }
 
-  update(id: number, updateBalanceDto: UpdateBalanceDto) {
-    return `This action updates a #${id} balance`;
+  update(cpf: number, updateBalanceDto: UpdateBalanceDto) {
+    return `This action updates a #${cpf} balance`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} balance`;
+  remove(cpf: string) {
+    return `This action removes a #${cpf} balance`;
   }
 }
