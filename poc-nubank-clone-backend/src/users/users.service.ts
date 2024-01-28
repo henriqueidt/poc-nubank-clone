@@ -15,7 +15,6 @@ export class UsersService {
   }
 
   async findAll(): Promise<User[]> {
-    // console.log('finding all');
     return await this.usersRepository.find();
   }
 
@@ -40,7 +39,7 @@ export class UsersService {
 
     const result = await this.usersRepository.update({ cpf }, createUserDto);
     console.log(result);
-    return editedUser;
+    return { ...editedUser, ...createUserDto };
   }
 
   public async deleteUser(userId: number): Promise<void> {
