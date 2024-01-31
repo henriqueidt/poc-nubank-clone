@@ -1,26 +1,19 @@
-import { Injectable } from '@nestjs/common';
-import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class AuthService {
-  create(createAuthDto: CreateAuthDto) {
-    return 'This action adds a new auth';
-  }
+  constructor(private usersService: UsersService) {}
 
-  findAll() {
-    return `This action returns all auth`;
-  }
+  // POSSIBLE INCREMENT: Encrypt password
+  async signIn(cpf: string, password: string): Promise<any> {
+    const user = await this.usersService.findOne(cpf);
+    if (user?.password !== password) {
+      throw new UnauthorizedException('Invalid Username or password');
+    }
 
-  findOne(id: number) {
-    return `This action returns a #${id} auth`;
-  }
+    const { password: pass, ...result } = user;
 
-  update(id: number, updateAuthDto: UpdateAuthDto) {
-    return `This action updates a #${id} auth`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} auth`;
+    return result;
   }
 }
