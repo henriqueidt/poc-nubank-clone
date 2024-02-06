@@ -20,7 +20,6 @@ export class UsersService {
 
   async findOne(cpf: string): Promise<User> {
     return await this.usersRepository.findOne({
-      // select: ['cpf', 'name', 'balance'],
       where: [{ cpf }],
     });
   }
