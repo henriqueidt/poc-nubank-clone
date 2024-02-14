@@ -10,8 +10,8 @@ export default function LoginCard() {
         <h1 className={classes.title}>Faça seu login</h1>
       </header>
       <form className={classes.form}>
-        <TextField id="cpf-input" label="CPF" />
-        <TextField id="password-input" label="password" />
+        <TextField id="cpf-input" label="CPF" mask="cpf" />
+        <TextField id="password-input" label="Senha" type="password" />
         <Button type="submit">CONTINUAR</Button>
       </form>
 

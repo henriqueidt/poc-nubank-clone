@@ -2,3 +2,26 @@
   display: flex;
   flex-direction: column;
 }
+
+.container:focus-within .label,
+.containerFilled .label {
+  transform: translate3d(0, 0.25rem, 0) scale(0.75);
+}
+
+.label {
+  font-size: 1rem;
+  transform: translate3d(0, 1.5rem, 0) scale(1);
+  transform-origin: left top;
+  transition: transform cubic-bezier(0.25, 0.8, 0.25, 1) 0.25s;
+}
+
+.input {
+  border: 0;
+  border-bottom: 1px dotted #ef5648;
+  outline: none;
+  font-size: 1.125rem;
+  color: #404040;
+  margin: 0 0 1rem;
+  padding: 0.5rem 0.1rem;
+  height: 1.25rem;
+}
