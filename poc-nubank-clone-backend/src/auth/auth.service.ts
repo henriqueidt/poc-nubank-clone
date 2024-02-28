@@ -15,10 +15,12 @@ export class AuthService {
     cpf: string,
     password: string,
   ): Promise<{ access_token: string }> {
-    const user = await this.usersService.findOne(cpf);
+    console.log(cpf, password);
+    const rawCpf = cpf.replace(/[^\w\s]/gi, '');
+    const user = await this.usersService.findOne(rawCpf);
 
     if (user?.password !== password) {
-      throw new UnauthorizedException('Invalid Username or password');
+      throw new UnauthorizedException('CPF ou senha inválidos.');
     }
 
     const payload = { sub: user.cpf, username: user.cpf };

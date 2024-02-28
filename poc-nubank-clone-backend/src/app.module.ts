@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { join } from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { DataSource } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
@@ -18,22 +19,26 @@ import { ConfigModule } from '@nestjs/config';
     TransferModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.DATABASE_HOST,
+      host: '127.0.0.1',
       port: 3306,
-      username: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASSWORD,
-      database: process.env.DATABASE_NAME,
+      username: 'user1',
+      password: 'user123USER123',
+      database: 'nubank-clone',
       // Grabs all entity files in project
       entities: [join(__dirname, '**', '*.entity.{ts,js}')],
+      // migrations: [join(__dirname, '**', '/migrations/*.entity.{ts,js}')],
+      // migrationsTableName: 'migrations_table',
       synchronize: false,
       ssl: {
-        rejectUnauthorized: true,
+        rejectUnauthorized: false,
       },
-      autoLoadEntities: true,
+      // autoLoadEntities: true,
     }),
     UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private dataSource: DataSource) {}
+}
