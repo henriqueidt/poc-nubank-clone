@@ -26,7 +26,7 @@ export default function LoginCard() {
     const { authState, error } = await auth.signIn(cpf, password);
 
     if (authState) {
-      router.push("/");
+      router.push("/home");
     } else {
       setErrorMessage(error?.message.toString() || "An error occurred");
     }

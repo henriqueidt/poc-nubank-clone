@@ -14,7 +14,14 @@ export class AuthService {
   async signIn(
     cpf: string,
     password: string,
-  ): Promise<{ access_token: string }> {
+  ): Promise<{
+    access_token: string;
+    user: {
+      cpf: string;
+      name: string;
+      balance: number;
+    };
+  }> {
     console.log(cpf, password);
     const rawCpf = cpf.replace(/[^\w\s]/gi, '');
     const user = await this.usersService.findOne(rawCpf);
@@ -25,8 +32,11 @@ export class AuthService {
 
     const payload = { sub: user.cpf, username: user.cpf };
 
+    const { password: pwd, ...rest } = user;
+
     return {
       access_token: await this.jwtService.signAsync(payload),
+      user: rest,
     };
   }
 }
