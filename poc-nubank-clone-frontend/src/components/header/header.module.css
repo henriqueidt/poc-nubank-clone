@@ -1,4 +1,11 @@
 .header {
   background-color: #771ac9;
   color: white;
+  padding: 1.5rem;
+}
+
+.topRegion {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.625rem;
 }

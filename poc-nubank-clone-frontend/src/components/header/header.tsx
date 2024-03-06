@@ -2,6 +2,9 @@ import useAuth from "@/lib/auth/useAuth";
 import classes from "./header.module.css";
 import IconButton from "../iconButton/iconButton";
 import userIcon from "../../../public/icons/user-icon.svg";
+import eyeClosedIcon from "../../../public/icons/eye-closed-icon.svg";
+import questionIcon from "../../../public/icons/question-icon.svg";
+import messageIcon from "../../../public/icons/message-icon.svg";
 
 export default function Header() {
   const { authState } = useAuth();
@@ -10,10 +13,15 @@ export default function Header() {
 
   return (
     <header className={classes.header}>
-      <div>
+      <div className={classes.topRegion}>
         <IconButton icon={userIcon} title="usuario" variant="lightPurple" />
+        <div>
+          <IconButton icon={eyeClosedIcon} title="usuario" />
+          <IconButton icon={questionIcon} title="usuario" />
+          <IconButton icon={messageIcon} title="usuario" />
+        </div>
       </div>
-      Ola, {name}
+      Olá, {name}
     </header>
   );
 }
