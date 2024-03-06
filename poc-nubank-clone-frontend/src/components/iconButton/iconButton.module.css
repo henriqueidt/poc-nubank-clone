@@ -1,3 +1,7 @@
+.container {
+  display: inline;
+}
+
 .iconButton {
   background-color: transparent;
   border: none;
@@ -10,4 +14,15 @@
 
 .lightPurple {
   background-color: #8f41d2;
+}
+
+.lightGray {
+  background-color: #f0f1f5;
+}
+
+.title {
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0.625rem;
 }

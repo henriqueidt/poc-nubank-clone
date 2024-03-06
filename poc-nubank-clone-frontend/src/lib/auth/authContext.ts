@@ -7,6 +7,8 @@ interface AuthContextData {
       name: string;
       balance: number;
     };
+    isAuthenticated?: boolean;
+    isLoading?: boolean;
   } | null;
   signIn(
     cpf: string,

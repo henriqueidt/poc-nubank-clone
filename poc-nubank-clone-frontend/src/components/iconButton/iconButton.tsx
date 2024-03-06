@@ -8,16 +8,21 @@ export default function IconButton({
   icon,
   title,
   variant = "transparent",
+  isVisibleTitle = false,
 }: {
   icon: string;
   title: string;
   variant?: IconButtonVariant;
+  isVisibleTitle: boolean;
 }) {
   const classNames = clsx(classes.iconButton, classes[variant]);
 
   return (
-    <button className={classNames}>
-      <Image src={icon} alt={title} />
-    </button>
+    <div className={classes.container}>
+      <button className={classNames}>
+        <Image src={icon} alt={title} />
+      </button>
+      {isVisibleTitle ? <div className={classes.title}>{title}</div> : null}
+    </div>
   );
 }

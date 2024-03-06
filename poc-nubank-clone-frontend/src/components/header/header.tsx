@@ -16,9 +16,9 @@ export default function Header() {
       <div className={classes.topRegion}>
         <IconButton icon={userIcon} title="usuario" variant="lightPurple" />
         <div>
-          <IconButton icon={eyeClosedIcon} title="usuario" />
-          <IconButton icon={questionIcon} title="usuario" />
-          <IconButton icon={messageIcon} title="usuario" />
+          <IconButton icon={eyeClosedIcon} title="visibilidade" />
+          <IconButton icon={questionIcon} title="perguntas" />
+          <IconButton icon={messageIcon} title="mensagem" />
         </div>
       </div>
       Olá, {name}
