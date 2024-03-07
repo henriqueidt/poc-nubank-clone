@@ -1,0 +1,15 @@
+.overlay {
+  position: absolute;
+  left: 0;
+  background-color: black;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  padding-top: 3.1875rem;
+}
+
+.modal {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+}

@@ -3,6 +3,7 @@ import { formatCurrency } from "@/lib/utils/formatUtils";
 import classes from "./accountDashboard.module.css";
 import IconButton from "../iconButton/iconButton";
 import pixIcon from "../../../public/icons/pix-icon.svg";
+import PixModal from "../pixModal/pixModal";
 
 export default function AccountDashboard() {
   const { authState } = useAuth();
@@ -15,12 +16,7 @@ export default function AccountDashboard() {
       <div className={classes.balance}>{formatCurrency(balance || 0)}</div>
       <div className={classes.actionsWrap}>
         <div className={classes.actionButtons}>
-          <IconButton
-            isVisibleTitle
-            icon={pixIcon}
-            title="Área Pix"
-            variant="lightGray"
-          />
+          <PixModal />
           <IconButton
             isVisibleTitle
             icon={pixIcon}
