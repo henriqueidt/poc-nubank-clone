@@ -5,7 +5,7 @@ import closeIcon from "../../../public/icons/close-icon.svg";
 import classes from "./modal.module.css";
 
 export default function Modal({ children }: { children: ReactNode }) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -19,12 +19,14 @@ export default function Modal({ children }: { children: ReactNode }) {
       {isOpen ? (
         <div className={classes.overlay}>
           <div className={classes.modal}>
-            <IconButton
-              icon={closeIcon}
-              title="Close Modal"
-              onClick={() => setIsOpen(!isOpen)}
-            />
-            children
+            <div className={classes.topRegion}>
+              <IconButton
+                icon={closeIcon}
+                title="Close Modal"
+                onClick={() => setIsOpen(!isOpen)}
+              />
+            </div>
+            <div className={classes.content}>{children}</div>
           </div>
         </div>
       ) : null}

@@ -15,7 +15,7 @@ import { APP_GUARD } from '@nestjs/core';
       global: true,
       secret: process.env.JWT_SECRET,
       signOptions: {
-        expiresIn: '60s',
+        expiresIn: '600s',
       },
     }),
   ],

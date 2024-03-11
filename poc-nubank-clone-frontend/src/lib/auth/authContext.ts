@@ -1,7 +1,8 @@
 import { createContext } from "react";
 
-interface AuthContextData {
+export interface AuthContextData {
   authState: {
+    access_token: string;
     user: {
       cpf: string;
       name: string;

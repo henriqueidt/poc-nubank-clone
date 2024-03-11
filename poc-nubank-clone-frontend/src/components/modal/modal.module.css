@@ -13,3 +13,11 @@
   height: 100%;
   width: 100%;
 }
+
+.topRegion {
+  margin-bottom: 0.75rem;
+}
+
+.content {
+  padding: 1rem;
+}

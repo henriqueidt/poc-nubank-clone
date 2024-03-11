@@ -20,21 +20,19 @@ export class TransferService {
   async create(transfer: CreateTransferDto): Promise<Transfer> {
     const originUser = await this.usersRepository.findOne({
       select: ['cpf', 'name', 'balance'],
-      where: { cpf: transfer.originCpf },
+      where: { cpf: transfer.originCpf.replace(/[^\w\s]/gi, '') },
     });
     const destinationUser = await this.usersRepository.findOne({
       select: ['cpf', 'name', 'balance'],
-      where: { cpf: transfer.destinationCpf },
+      where: { cpf: transfer.destinationCpf.replace(/[^\w\s]/gi, '') },
     });
 
     if (!originUser || !destinationUser) {
-      throw new NotFoundException('User not found!');
+      throw new NotFoundException('Chave pix nao encontrada!');
     }
 
     if (originUser.balance < transfer.value) {
-      throw new BadRequestException(
-        'You do not have enough money for this transaction',
-      );
+      throw new BadRequestException('Saldo insuficiente');
     }
 
     originUser.balance -= transfer.value;

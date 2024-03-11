@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import classes from "./textField.module.css";
+import { formatCurrency } from "@/lib/utils/formatUtils";
 
 const masks = {
   cpf: (v: string) =>
@@ -18,7 +19,7 @@ export default function TextField({
   type = "text",
   mask,
 }: {
-  label: string;
+  label?: string;
   id: string;
   type?: "text" | "password";
   mask?: "cpf";
@@ -38,9 +39,11 @@ export default function TextField({
 
   return (
     <div className={`${classes.container} ${containerClasses}`}>
-      <label className={classes.label} htmlFor={id}>
-        {label}
-      </label>
+      {label ? (
+        <label className={classes.label} htmlFor={id}>
+          {label}
+        </label>
+      ) : null}
       <input
         className={classes.input}
         type={type}

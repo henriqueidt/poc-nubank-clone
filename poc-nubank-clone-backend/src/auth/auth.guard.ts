@@ -38,7 +38,7 @@ export class AuthGuard implements CanActivate {
     const token = this.extractTokenFromHeader(request);
     if (!token) {
       throw new UnauthorizedException(
-        'You must be logged in to perform this action',
+        'Você deve estar logado para realizar esta ação',
       );
     }
     try {
@@ -50,7 +50,7 @@ export class AuthGuard implements CanActivate {
       request['user'] = payload;
     } catch {
       throw new UnauthorizedException(
-        'You must be logged in to perform this action',
+        'Você deve estar logado para realizar esta ação',
       );
     }
     return true;
