@@ -13,7 +13,7 @@ export default function EnterValueStep({
     e.preventDefault();
     const formEl = e.target as HTMLFormElement;
     const value = formEl.transferValue.value;
-    onValueEntered(value);
+    onValueEntered(parseFloat(value));
   };
 
   return (

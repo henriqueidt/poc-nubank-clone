@@ -4,8 +4,19 @@ import pixIcon from "../../../public/icons/pix-icon.svg";
 import closeIcon from "../../../public/icons/close-icon.svg";
 import classes from "./modal.module.css";
 
-export default function Modal({ children }: { children: ReactNode }) {
+export default function Modal({
+  children,
+  onClose,
+}: {
+  children: ReactNode;
+  onClose: Function;
+}) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleClose = () => {
+    setIsOpen(!isOpen);
+    onClose();
+  };
 
   return (
     <>
@@ -23,7 +34,7 @@ export default function Modal({ children }: { children: ReactNode }) {
               <IconButton
                 icon={closeIcon}
                 title="Close Modal"
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={handleClose}
               />
             </div>
             <div className={classes.content}>{children}</div>

@@ -17,9 +17,16 @@ export default function PixModal() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const auth = useAuth();
-  const { authState } = auth;
+  const { authState, updateBalance } = auth;
   const { user } = authState || {};
   const { cpf: userCpf } = user || {};
+
+  const handleCloseModal = () => {
+    setStep("initial");
+    setValue(0);
+    setDestination("");
+    setErrorMessage("");
+  };
 
   const handleChangeStep = (newStep: Step) => {
     setStep(newStep);
@@ -52,11 +59,13 @@ export default function PixModal() {
       return;
     }
 
+    updateBalance(data.origin.balance);
+
     setStep("success");
   };
 
   return (
-    <Modal>
+    <Modal onClose={handleCloseModal}>
       {step === "initial" && (
         <>
           <h2 className={classes.title}>Área Pix</h2>

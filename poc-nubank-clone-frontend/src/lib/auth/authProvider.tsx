@@ -7,7 +7,7 @@ export default function AuthProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [authState, setAuthState] = useState(null);
+  const [authState, setAuthState] = useState<{}>({});
 
   const signIn = async (cpf: string, password: string) => {
     const { data, error } = await login(cpf, password);
@@ -27,8 +27,20 @@ export default function AuthProvider({
     return { authState };
   };
 
+  const updateBalance = (balance: number) => {
+    if (authState?.user) {
+      setAuthState({
+        ...authState,
+        user: {
+          ...authState.user,
+          balance,
+        },
+      });
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ authState, signIn }}>
+    <AuthContext.Provider value={{ authState, signIn, updateBalance }}>
       {children}
     </AuthContext.Provider>
   );
