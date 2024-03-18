@@ -1,0 +1,27 @@
+.actionPanel {
+  padding: 1.5625rem 1rem;
+  border-top: 2px solid #f0f1f5;
+  color: black;
+}
+
+.icon {
+  margin-bottom: 0.625rem;
+}
+
+.title {
+  margin-bottom: 0.875rem;
+  font-size: 1.0625rem;
+  font-weight: bold;
+}
+
+.description {
+  margin-bottom: 0.4375rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #737682;
+}
+
+.value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
